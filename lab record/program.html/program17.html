@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Listeners Demo</title>
+</head>
+<body>
+
+<button id="btn">Click Me</button>
+<p id="output">Press any key...</p>
+
+<script>
+  const btn = document.getElementById("btn");
+  const output = document.getElementById("output");
+
+  
+  function handleClick() {
+    alert("Button clicked!");
+  }
+  btn.addEventListener("click", handleClick);
+
+  
+  btn.addEventListener("mouseover", () => {
+    btn.style.backgroundColor = "lightblue";
+  });
+
+  
+  btn.addEventListener("mouseout", () => {
+    btn.style.backgroundColor = "";
+  });
+
+  
+  function handleKey(event) {
+    output.innerText = "Key pressed: " + event.key;
+  }
+  document.addEventListener("keydown", handleKey);
+
+  
+  setTimeout(() => {
+    btn.removeEventListener("click", handleClick);
+    document.removeEventListener("keydown", handleKey);
+    console.log("Event listeners removed");
+  }, 5000);
+</script>
+
+</body>
+</html>
